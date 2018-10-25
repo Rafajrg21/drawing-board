@@ -1,0 +1,20 @@
+{
+  "name": "drawBoard",
+  "version": "1.0.0",
+  "description": "A simple collaborative drawing board using socket.io and express",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "web",
+    "socket.io",
+    "express"
+  ],
+  "author": "Rafa && Ana",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "socket.io": "^2.1.1"
+  }
+}
