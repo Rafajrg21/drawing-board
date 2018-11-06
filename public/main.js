@@ -11,7 +11,7 @@ let canvas = document.getElementsByClassName('drawboard')[0];
 let users = $('info');
 let header = $('header');
 let context = canvas.getContext('2d');
-/*
+
 function count() {
   count.id++;
 }
@@ -21,7 +21,7 @@ function uncount(){
 }
 
 count.id = 0;
-*/
+
 //buscar como almacenar la variable en el servidor 
 
 socket.on('hello', ()=>{    
@@ -37,10 +37,13 @@ socket.on('hello', ()=>{
 });
 
 socket.on('disconnected',(user) => {
+    uncount();  
     let gone = document.createElement('li');
     gone.innerHTML=`${user} se ha desconectado`;
+    let notify = document.createElement('li');
+    notify.innerHTML=`number of active users is: ${count.id}`
     users.appendChild(gone);
-    uncount();
+    header.appendChild(notify);
     console.log(count.id);
 });
 
