@@ -5,15 +5,17 @@
   <title>Draw now!</title>
   <link rel="stylesheet" href="main.css">
 </head>
-<body>
+<body onload="countVisits()">
 
   <canvas class="drawboard"></canvas>
 
   <div id="info">
     <div id="header">Username: </div>
-      Timeline:
+    <div id="lblcounter"></div>
+    <br><br>
+    Timeline:
   </div>
-
+  
   <script src="/socket.io/socket.io.js"></script>
   <script src="main.js"></script>
 </body>

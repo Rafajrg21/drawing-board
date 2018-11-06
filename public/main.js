@@ -11,24 +11,44 @@ let canvas = document.getElementsByClassName('drawboard')[0];
 let users = $('info');
 let header = $('header');
 let context = canvas.getContext('2d');
+/*
+function count() {
+  count.id++;
+}
 
-socket.on('hello', ()=>{
+function uncount(){
+  count.id--;
+}
+
+count.id = 0;
+*/
+//buscar como almacenar la variable en el servidor 
+
+socket.on('hello', ()=>{    
+    count();
+    console.log(count.id)
     let lo = document.createElement('li');
-    let li = document.createElement('li');
-    lo.innerHTML=`${socket.id}`;
+    let li = document.createElement('li');  
+    lo.innerHTML=`You are ${socket.id} and number of active users is: ${count.id}`;
     li.innerHTML=`Usuario ${socket.id} se acaba de unir`;
     header.appendChild(lo);
     users.appendChild(li);
     onColorUpdate();
 });
 
-socket.on('disconnected',() => {
-    let li = document.createElement('li');
-    li.innerHTML=`${socket.id} se ha desconectado`;
-    users.appendChild(li);
+socket.on('disconnected',(user) => {
+    let gone = document.createElement('li');
+    gone.innerHTML=`${user} se ha desconectado`;
+    users.appendChild(gone);
+    uncount();
+    console.log(count.id);
 });
 
-let colors = ['black', 'red', 'blue', 'green', 'purple', 'orange'];
+window.onunload = ()=>{
+  socket.emit('disconnected',(socket.id));
+}
+
+let colors = ['maroon', 'black', 'red', 'blue', 'green', 'purple', 'orange', 'yellow', 'lime', 'aqua', 'teal', 'silver', 'magenta'];
 
   let current = {
     color: colors[0]

@@ -11,10 +11,10 @@ app.use(express.static(__dirname + '/node_modules'));
 server.listen(port, () => console.log('listening on port ' + port));
 
 io.sockets.on('connection', function(socket){
-    io.emit('hello')
+    io.emit('hello');
     socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
-    socket.on('disconnected',function(){
-		socket.broadcast.emit('disconnected');
+    socket.on('disconnected',function(user){
+		socket.broadcast.emit('disconnected',user);
 	});
 });
 
