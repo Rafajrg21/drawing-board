@@ -1,21 +1,27 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Draw now!</title>
   <link rel="stylesheet" href="main.css">
 </head>
+
 <body>
 
   <canvas class="drawboard"></canvas>
 
-  <div id="info">
-    <div id="header">Username: </div>
+  <div class="sidenav" id="timeline">
+    <div id="header">
+      <h4>Username:</h4>
+    </div>
     <br><br>
-    Timeline:
+    <h3>Timeline:</h3>
+    <p id="info"></p>
   </div>
-  
+
   <script src="/socket.io/socket.io.js"></script>
   <script src="main.js"></script>
 </body>
+
 </html>
